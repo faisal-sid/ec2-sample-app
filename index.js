@@ -76,12 +76,12 @@ async function initialize() {
 initialize()
 
 app.get('/people', (req, res) => {
-  getPeople().then(data => res.send(JSON.stringify(data)))
+  getPeople().then(data => res.json(data))
 
 })
 
 app.get('/person/:id', (req, res) => {
-  getPerson(parseInt(req.params.id)).then(data => res.send(JSON.stringify(data)))
+  getPerson(parseInt(req.params.id)).then(data => res.json(data))
 })
 
 

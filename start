@@ -1,3 +1,4 @@
+#!/bin/bash
 export PATH=$PATH:/opt/node/bin
 cd /opt/ec2-sample-app/
 node index.js

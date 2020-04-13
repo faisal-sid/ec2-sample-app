@@ -21,6 +21,7 @@ cat > /etc/systemd/system/app.service <<DELIM
 Description=EC2 Sample App
 
 [Service]
+EnvironmentFile=/etc/environment
 ExecStart=/opt/ec2-sample-app/start
 User=root
 
