@@ -78,6 +78,7 @@ Metadata:
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
     421bfd7a-aa46-432d-ab1b-0fa2957a3318:
       size:
         width: 140
@@ -146,6 +147,7 @@ Metadata:
       embeds:
         - 2c1755be-3d52-45f0-bdf7-130d77d027ce
       iscontainedinside:
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
@@ -362,6 +364,7 @@ Metadata:
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
+        - 023730fd-e43c-4dce-be8d-002e446482a3
       dependson:
         - cbd2d24c-206b-4546-9b59-4086763031b2
     fa70cb3f-6a5b-40f1-b65e-d52ba1113d42:
@@ -424,6 +427,7 @@ Metadata:
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
+        - 5ee384ce-94fa-423a-8780-960fb3e58d84
     4b55ccd4-9dfa-4bd2-9467-6fbfe42158d7:
       size:
         width: 60
@@ -435,6 +439,12 @@ Metadata:
       embeds: []
       isassociatedwith:
         - bc33c4a7-d799-4f84-a223-ce58430bccc6
+    51317f9e-0844-499a-80c2-a4b2ec41ff89:
+      source:
+        id: 4b55ccd4-9dfa-4bd2-9467-6fbfe42158d7
+      target:
+        id: bc33c4a7-d799-4f84-a223-ce58430bccc6
+      z: 0
 Resources:
   myappvpc:
     Type: 'AWS::EC2::VPC'
@@ -507,6 +517,11 @@ Resources:
     Properties:
       VpcId: !Ref myappvpc
       GroupDescription: This is for the db
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          CidrIp: 0.0.0.0/0
+          FromPort: 5432
+          ToPort: 5432
     Metadata:
       'AWS::CloudFormation::Designer':
         id: d430b4f9-4323-40c8-9693-ed269c4c4b3c
@@ -560,3 +575,6 @@ Resources:
     Properties:
       InstanceId: !Ref appInstance
       EIP: !Ref appelasticip
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 51317f9e-0844-499a-80c2-a4b2ec41ff89
