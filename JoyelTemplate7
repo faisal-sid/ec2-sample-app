@@ -88,6 +88,7 @@ Metadata:
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
     421bfd7a-aa46-432d-ab1b-0fa2957a3318:
       size:
         width: 140
@@ -156,6 +157,7 @@ Metadata:
       embeds:
         - 2c1755be-3d52-45f0-bdf7-130d77d027ce
       iscontainedinside:
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
@@ -392,6 +394,7 @@ Metadata:
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
+        - 023730fd-e43c-4dce-be8d-002e446482a3
       dependson:
         - cbd2d24c-206b-4546-9b59-4086763031b2
     fa70cb3f-6a5b-40f1-b65e-d52ba1113d42:
@@ -429,6 +432,7 @@ Metadata:
       isassociatedwith:
         - 8d757521-e37b-4a9e-a7f0-9a0885611bb2
       iscontainedinside:
+        - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
@@ -502,6 +506,10 @@ Parameters:
       - m1.small
       - m1.large
     Description: 'Enter t2.micro, m1.small, or m1.large. Default is t2.micro.'
+  KeyNameParameter:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance.
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    ConstraintDescription: Must be the name of an existing EC2 KeyPair.
 Resources:
   myappvpc:
     Type: 'AWS::EC2::VPC'
@@ -617,6 +625,7 @@ Resources:
       SecurityGroupIds:
         - !Ref appsecuritygroup
       SubnetId: !Ref appsubnet
+      KeyName: !Ref KeyNameParameter
     Metadata:
       'AWS::CloudFormation::Designer':
         id: bc33c4a7-d799-4f84-a223-ce58430bccc6
