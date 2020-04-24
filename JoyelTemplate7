@@ -86,6 +86,8 @@ Metadata:
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
     421bfd7a-aa46-432d-ab1b-0fa2957a3318:
       size:
         width: 140
@@ -154,6 +156,8 @@ Metadata:
       embeds:
         - 2c1755be-3d52-45f0-bdf7-130d77d027ce
       iscontainedinside:
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
+        - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
         - 597fc44f-7148-432a-82f1-95b64acc3f25
@@ -386,6 +390,8 @@ Metadata:
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
         - 023730fd-e43c-4dce-be8d-002e446482a3
+        - 023730fd-e43c-4dce-be8d-002e446482a3
+        - 023730fd-e43c-4dce-be8d-002e446482a3
       dependson:
         - cbd2d24c-206b-4546-9b59-4086763031b2
     fa70cb3f-6a5b-40f1-b65e-d52ba1113d42:
@@ -456,6 +462,8 @@ Metadata:
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
         - 5ee384ce-94fa-423a-8780-960fb3e58d84
+        - 5ee384ce-94fa-423a-8780-960fb3e58d84
+        - 5ee384ce-94fa-423a-8780-960fb3e58d84
     4b55ccd4-9dfa-4bd2-9467-6fbfe42158d7:
       size:
         width: 60
@@ -485,6 +493,15 @@ Metadata:
       target:
         id: 5ee384ce-94fa-423a-8780-960fb3e58d84
       z: 1
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: 'Enter t2.micro, m1.small, or m1.large. Default is t2.micro.'
 Resources:
   myappvpc:
     Type: 'AWS::EC2::VPC'
@@ -596,7 +613,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: ami-0fc20dd1da406780b
-      InstanceType: t2.nano
+      InstanceType: !Ref InstanceTypeParameter
       SecurityGroupIds:
         - !Ref appsecuritygroup
       SubnetId: !Ref appsubnet
