@@ -1,10 +1,12 @@
 const express = require('express')
-const mysql = require('mysql')
+const { Client } = require('pg')
 const app = express()
+const connectionString = 'postgres://postgres:postgres@localhost:5432/database';
 
 function getConnection() {
-  return mysql.createConnection({
+  return new Client({
     host: process.env.DBHOST,
+    port: process.env.DBPORT,
     user: process.env.DBUSER,
     password: process.env.DBPASSWORD,
     database: 'peopledb'
@@ -18,7 +20,8 @@ function getPeopleCount() {
     connection.query('SELECT count(*) as count FROM people', function (error, results, fields) {
       if (error) reject(error)
       connection.end()
-      resolve(results[0].count)
+      console.log(results)
+      resolve(results.rows[0].count)
     })
   })
 }
