@@ -1,4 +1,3 @@
-DROP DATABASE peopledb;
 CREATE DATABASE peopledb;
 \c peopledb
 CREATE TABLE people(
